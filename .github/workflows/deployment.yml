@@ -13,7 +13,7 @@ jobs:
   deploy-to-test:
     environment: test
     needs: build
-    if: ${{ vars.DEPLOYMENT_ENABLED == 'TRUE' }}
+    if: ${{ vars.DEPLOYMENT_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to test
@@ -22,7 +22,7 @@ jobs:
   deploy-to-stage:
     environment: stage
     needs: deploy-to-test
-    if: ${{ vars.DEPLOYMENT_ENABLED == 'TRUE' }}
+    if: ${{ vars.DEPLOYMENT_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to stage
@@ -31,7 +31,7 @@ jobs:
   deploy-to-prod:
     environment: prod
     needs: deploy-to-stage
-    if: ${{ vars.DEPLOYMENT_ENABLED == 'TRUE' }}
+    if: ${{ vars.DEPLOYMENT_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to prod

@@ -1,19 +1,19 @@
-name: Deployment
+name: Deployment using vars from environments
 
 on:
   workflow_dispatch:
-
+    
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build project
-        run: echo "Building the project..."
+     - name: Build project
+       run: echo "Building the project..."
 
   deploy-to-test:
     environment: test
     needs: build
-    if: ${{ vars.DEPLOYMENT_ENABLEDT == 'TRUE' }}
+    if: ${{ vars.DEPLOYMENT_ENABLED == 'TRUE' }}
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to test

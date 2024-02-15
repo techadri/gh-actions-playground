@@ -1,0 +1,38 @@
+name: Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build project
+        run: echo "Building the project..."
+
+  deploy-to-test:
+    environment: test
+    needs: build
+    if: ${{ vars.DEPLOYMENT_ENABLEDT == 'TRUE' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to test
+      run: echo "Deploying to test environment"
+
+  deploy-to-stage:
+    environment: stage
+    needs: deploy-to-test
+    if: ${{ vars.DEPLOYMENT_ENABLED == 'TRUE' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to stage
+      run: echo "Deploying to stage environment"
+
+  deploy-to-prod:
+    environment: prod
+    needs: deploy-to-stage
+    if: ${{ vars.DEPLOYMENT_ENABLED == 'TRUE' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to prod
+      run: echo "Deploying to prod environment"

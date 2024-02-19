@@ -13,7 +13,7 @@ jobs:
   deploy-to-test:
     environment: test
     needs: build
-    if: ${{ vars.DEPLOYMENT_ENABLED == 'true' }}
+    if: vars.DEPLOYMENT_ENABLED == 'true'
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to test

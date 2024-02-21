@@ -3,4 +3,4 @@
 
 Pausing the deployment of the different environments is possible by setting the corresponding variables, see image below.
 
-<img src="./docs/settings.png" alt="Settings Page" width="800"/>
+<img src="./docs/settings-page.png" alt="Settings Page" width="800"/>
